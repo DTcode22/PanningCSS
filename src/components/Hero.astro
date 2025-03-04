@@ -1,0 +1,155 @@
+---
+import myImg from "../images/me.jpeg";
+---
+
+<div class="background">
+  <div class="screen">
+    <div class="screen-image"></div>
+    <div class="screen-overlay"></div>
+  </div>
+</div>
+
+
+<style>
+  :root {
+    --background-rgb: 29 30 34;
+    --blue-rgb: 33 150 243;
+    --primary-rgb: var(--blue-rgb);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  .background {
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -5;
+  }
+  .screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* border: 3px solid rgb(var(--primary-rgb) / 80%); */
+    box-shadow: inset 0 0 0 5px rgb(var(--primary-rgb) / 0.5);
+    background-color: rgb(var(--primary-rgb) / 15%);
+    overflow: hidden;
+    z-index: 10;
+  }
+  .screen-overlay {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      rgb(var(--primary-rgb) / 0.1),
+      rgb(var(--primary-rgb) / 0.1) 3px,
+      transparent 3px,
+      transparent 9px
+    );
+    background-size: 100% 9px;
+    animation: pan-overlay 30s infinite linear;
+    z-index: 2;
+  }
+  @keyframes pan-overlay {
+    from {
+      background-position: 0% 0%;
+    }
+
+    to {
+      background-position: 0% -100%;
+    }
+  }
+
+  @keyframes pan-image {
+    0% {
+      background-position: 44% 40%;
+      background-size: 110%;
+    }
+    /*dont touch*/
+    20% {
+      background-position: 34% 45%;
+      background-size: 100%;
+    }
+
+    20.0001% {
+      /* -- View 2 -- */
+      background-position: 77% 63%;
+      background-size: 110%;
+    }
+    40% {
+      background-position: 21% 69%;
+      background-size: 130%;
+    }
+
+    40.0001% {
+      /* -- View 3 -- */
+      background-position: 50% 50%;
+      background-size: 130%;
+    }
+
+    60% {
+      background-position: 70% 50%;
+      background-size: 120%;
+    }
+
+    60.0001% {
+      /* -- View 4 -- */
+      background-position: 20% 20%;
+      background-size: 120%;
+    }
+    /* perfect */
+    80% {
+      background-position: 15% 15%;
+      background-size: 100%;
+    }
+
+    80.0001% {
+      /* -- View 5 -- */
+      background-position: 90% 72%;
+      background-size: 105%;
+    }
+
+    100% {
+      background-position: 80% 70%;
+      background-size: 110%;
+    }
+  }
+  .screen > .screen-image {
+    background-image: url("../mountiants2.avif");
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+    background-size: 300%;
+    background-position: 0% 0%;
+    filter: sepia(100%) hue-rotate(160deg);
+    opacity: 0.8;
+    animation: pan-image 50s linear infinite;
+  }
+  @media (max-width: 768px) {
+    @keyframes pan-image {
+    }
+    .screen > .screen-image {
+      background-position: 10% 30%;
+      background-size: 180%;
+    }
+  }
+
+  .text-about {
+    font-family: "Tangerine", cursive;
+    font-weight: 700;
+    font-size: 22px;
+    padding: 5px;
+    background: rgb(var(--primary-rgb) / 0.3);
+    border: 1px solid rgb(var(--primary-rgb) / 1);
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 8px 16px rgb(var(--primary-rgb) / 0.5);
+  }
+</style>
